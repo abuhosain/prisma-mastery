@@ -14,29 +14,28 @@ const main = async () => {
   // console.log(result)
   // const getAllFromDB = await prisma.post.findMany();
   // console.log(getAllFromDB);
-// create many
+  // create many
   const createMany = await prisma.post.createMany({
-    data : [
-        {
-            title : "this is title 1",
-          content : "this is content 1",
-           authorName : "author 1 "
-        },
-        {
-            title : "this is title 2",
-          content : "this is content 2",
-           authorName : "author 2 "
-        },
-        {
-            title : "this is title 3",
-          content : "this is content 3",
-           authorName : "author 3"
-        }
-    ]
-  })
+    data: [
+      {
+        title: "this is title 1",
+        content: "this is content 1",
+        authorName: "author 1 ",
+      },
+      {
+        title: "this is title 2",
+        content: "this is content 2",
+        authorName: "author 2 ",
+      },
+      {
+        title: "this is title 3",
+        content: "this is content 3",
+        authorName: "author 3",
+      },
+    ],
+  });
 
-  console.log(createMany)
-
+  console.log(createMany);
 };
 
 main();
