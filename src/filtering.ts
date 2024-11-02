@@ -44,6 +44,49 @@ const filtering = async () => {
     },
   });
 
-  console.log(notFiltering);
+  const startsWith = await prisma.user.findMany({
+    where: {
+      email: {
+        startsWith: "user1",
+      },
+    },
+  });
+
+  const endWith = await prisma.user.findMany({
+    where: {
+      email: {
+        endsWith: "com",
+      },
+    },
+  });
+
+  const userNameArray = ["user1", "user4", "user3"];
+
+  const userNameByArray = await prisma.user.findMany({
+    where: {
+      username: {
+        in: userNameArray,
+      },
+    },
+  });
+
+  const inDeptch = await prisma.user.findMany({
+    where: {
+      id: 1,
+    },
+    include: {
+      post: {
+        include: {
+          PostCategory: {
+            include: {
+              category: true,
+            },
+          },
+        },
+      },
+    },
+  });
+
+  console.dir(inDeptch, { depth: Infinity });
 };
 filtering();
